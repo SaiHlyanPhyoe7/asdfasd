@@ -16,12 +16,6 @@ export class CreateArticleDto {
   title: string;
 
   @IsNotEmpty()
-  @MinLength(5)
-  @IsString()
-  @ApiProperty()
-  author: string;
-
-  @IsNotEmpty()
   @IsString()
   @IsOptional()
   @MaxLength(300)

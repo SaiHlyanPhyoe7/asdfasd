@@ -14,10 +14,21 @@ model Article {
   // @id mean primary key of the model
   id          Int      @id @default(autoincrement())
   title       String   @unique
-  author      String?
   description String?
   body        String
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    Int?
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String?
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updateAt  DateTime  @updatedAt()
+  article   Article[]
 }
